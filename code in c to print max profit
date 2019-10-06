@@ -1,0 +1,55 @@
+//c code to find the maximum profit gien an arry of prices in continious days
+
+#include<stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int arr[n];
+    int i;
+    for (i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int min;
+    int max;
+    int r=0;
+    i=0;
+    int p=0;
+    int t=0;
+    while(i<n)
+    {
+        printf("checking for %d\n",arr[i]);
+        if(arr[i]<arr[i+1] && p!=1)
+        {
+            min=arr[i];
+            if(r>min)
+            {
+                r=r-min;
+            }
+            t=t+1;
+            printf("min is:%d\n",min);
+            p=1;
+        }
+        if(p==1)
+        {
+            if(arr[i]>arr[i+1] || i==n-1)
+            {
+            max=arr[i];
+            printf("max is %d\n",max);
+            p=0;
+            t=t+1;
+            }
+        }
+        if(t%2==0)
+        {
+        r=r+max-min;
+        printf("r:%d\n",r);
+        }
+        i=i+1;
+
+    }
+    printf("the maximum profit is %d",r);
+    return 0;
+}
